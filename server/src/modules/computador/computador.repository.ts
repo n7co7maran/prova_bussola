@@ -6,7 +6,7 @@ export class ComputadorRepository{
         return await prisma.computador.findMany();
     }
 
-    async create(data: {id: string; nome: string; cor: string; dataFabricacao: number}) {
+    async create(data: {id: string; nome: string; cor: string; datafabricacao: number}) {
         return await prisma.computador.create({data});
     }
 
@@ -14,7 +14,7 @@ export class ComputadorRepository{
         return await prisma.computador.findUnique({where: {id}});
     }
 
-    async update(id: string, data: {nome: string; cor: string, dataFabricacao: number}) {
+    async update(id: string, data: {nome: string; cor: string, datafabricacao: number}) {
         return await prisma.computador.update({where: {id}, data});
     }
 

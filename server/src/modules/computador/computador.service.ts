@@ -8,17 +8,17 @@ export class ComputadorService {
         return await this.repository.findAll();
     }
 
-    async createComputador(nome: string, cor: string, dataFabricacao: number) {
+    async createComputador(nome: string, cor: string, datafabricacao: number) {
         const id = crypto.randomUUID();
-        return await this.repository.create({id, nome, cor, dataFabricacao});
+        return await this.repository.create({id, nome, cor, datafabricacao});
     }
 
     async getComputadorById(id: string) {
         return await this.repository.findById(id);
     }
 
-    async updateComputador(id: string, nome: string, cor: string, dataFabricacao: number) {
-        return await this.repository.update(id, {nome, cor, dataFabricacao});
+    async updateComputador(id: string, nome: string, cor: string, datafabricacao: number) {
+        return await this.repository.update(id, {nome, cor, datafabricacao});
     }
 
     async deleteComputador(id: string) {

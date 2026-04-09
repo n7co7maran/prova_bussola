@@ -1,9 +1,8 @@
+import "dotenv/config";
 import {app} from "./app";
 
-const initServer = () => {
-  app.listen(3000, () => {
-    console.log("Servidor rodando na porta 3000.");
-  });
-};
+const PORT = 3001;
 
-initServer();
+app.listen(PORT, () => {
+    console.log(`Servidor rodando em: http://localhost:${PORT}`);
+});

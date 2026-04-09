@@ -5,14 +5,14 @@ export class PerifericoController {
     private service = new PerifericoService();
 
     async listAll(req: Request, res: Response) {
-        const departments = await this.service.getAllPerifericos();
-        return res.json(departments);
+        const perifericos = await this.service.getAllPerifericos();
+        return res.json(perifericos);
     }
 
     async create(req: Request, res: Response) {  
-        const {nome} = req.body;
-        const newDept = await this.service.createPeriferico(nome);
-        return res.status(201).json(newDept);
+        const {nome, computadorid} = req.body;
+        const result = await this.service.createPeriferico({nome, computadorid});
+        return res.status(201).json(result);
     }
 
     async getById(req: Request, res: Response) {
@@ -23,8 +23,8 @@ export class PerifericoController {
 
     async update(req: Request, res: Response) {
         const {id} = req.params;
-        const {nome} = req.body;
-        const update = await this.service.updatePeriferico(id as string, nome);
+        const {nome, computadorid} = req.body;
+        const update = await this.service.updatePeriferico(id as string, {nome, computadorid});
         return res.json(update);
     }
 

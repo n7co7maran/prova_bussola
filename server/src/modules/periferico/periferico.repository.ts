@@ -3,18 +3,25 @@ import { prisma } from "../../lib/prisma";
 export class PerifericoRepository{
 
     async findAll() {
-        return await prisma.periferico.findMany();
+        return await prisma.periferico.findMany({
+            include: {
+                computador: true
+            }
+        });
     }
 
-    async create(data: {id: string; nome: string;}) {
+    async create(data: {nome: string; computadorid: string}) {
         return await prisma.periferico.create({data});
     }
 
     async findById(id: string) {
-        return await prisma.periferico.findUnique({where: {id}});
+        return await prisma.periferico.findUnique({
+            where: {id},
+            include: {computador: true}
+        });
     }
 
-    async update(id: string, data: {nome: string; cor: string, dataFabricacao: number}) {
+    async update(id: string, data: {nome: string; computadorid: string}) {
         return await prisma.periferico.update({where: {id}, data});
     }
 

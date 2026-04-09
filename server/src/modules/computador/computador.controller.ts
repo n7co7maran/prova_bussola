@@ -5,14 +5,14 @@ export class ComputadorController {
     private service = new ComputadorService();
 
     async listAll(req: Request, res: Response) {
-        const departments = await this.service.getAllComputadores();
-        return res.json(departments);
+        const computadores = await this.service.getAllComputadores();
+        return res.json(computadores);
     }
 
     async create(req: Request, res: Response) {  
-        const {nome, cor, dataFabricacao} = req.body;
-        const newDept = await this.service.createComputador(nome, cor, dataFabricacao);
-        return res.status(201).json(newDept);
+        const {nome, cor, datafabricacao} = req.body;
+        const result = await this.service.createComputador(nome, cor, datafabricacao);
+        return res.status(201).json(result);
     }
 
     async getById(req: Request, res: Response) {
@@ -23,8 +23,8 @@ export class ComputadorController {
 
     async update(req: Request, res: Response) {
         const {id} = req.params;
-        const {nome, cor, dataFabricacao} = req.body;
-        const update = await this.service.updateComputador(id as string, nome, cor, dataFabricacao);
+        const {nome, cor, datafabricacao} = req.body;
+        const update = await this.service.updateComputador(id as string, nome, cor, datafabricacao);
         return res.json(update);
     }
 
